@@ -2,6 +2,13 @@ import tweepy
 import json
 
 def authenticate():
+    """Authenticates connection with Twitter API via Tweepy module. 
+    Required to have a 'credentials.json' file in the same directory 
+    containing user access information.
+
+    Returns:
+        object: tweepy API connection
+    """
     # Opening JSON file
     with open('credentials.json') as f:
         credentials = json.load(f)

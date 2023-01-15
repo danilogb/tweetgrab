@@ -1,6 +1,7 @@
 import twitter_auth
 import db
 import tweepy
+from tqdm import tqdm
 
 def main(search_term):
     # Authenticate with Twitter API
@@ -10,7 +11,7 @@ def main(search_term):
     conn = db.create_connection()
     
     # Retrieve tweets
-    for page in tweepy.Cursor(api.search_tweets, q=search_term, count=100).pages(100):
+    for page in tqdm(tweepy.Cursor(api.search_tweets, q=search_term, count=100).pages(100), desc='Retrieving tweets:'):
         for tweet in page:
             # Insert tweet into database
             db.insert_tweet(conn, tweet)
@@ -20,4 +21,4 @@ def main(search_term):
     
     
 if __name__ == '__main__':
-    main(search_term= "Bolsonaro")
+    main(search_term = "Lula")  # insert search term here
