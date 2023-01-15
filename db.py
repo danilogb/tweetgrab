@@ -7,7 +7,7 @@ def create_connection():
     Returns:
         object: sqlite database connection object
     """
-    conn = sqlite3.connect('tweets.db')
+    conn = sqlite3.connect('data/tweets.db')
     c = conn.cursor()
     c.execute('''
                 CREATE TABLE IF NOT EXISTS tweets
